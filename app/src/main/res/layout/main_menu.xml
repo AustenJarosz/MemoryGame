@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity = "center"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/playButton"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Start"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <Button
+        android:id="@+id/idiotButton"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="DONT CLICK THIS IDIOT"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="159dp" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="431dp" />
+</LinearLayout>
