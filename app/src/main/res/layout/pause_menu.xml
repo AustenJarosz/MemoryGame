@@ -10,38 +10,28 @@
 
 
     <Button
-        android:id="@+id/playButton"
+        android:id="@+id/resumeButton"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:padding="20dp"
-        android:text="Start"
+        android:padding="10dp"
+        android:text="Resume"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="167dp" />
 
-    <Button
-        android:id="@+id/idiotButton"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Instructions (In-progress)"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="159dp" />
 
     <Button
-        android:id="@+id/exitButton"
+        android:id="@+id/exitGameButton"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="20dp"
-        android:text="Exit"
+        android:text="Exit Game"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="431dp" />
 </LinearLayout>

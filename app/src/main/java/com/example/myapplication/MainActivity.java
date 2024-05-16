@@ -2,38 +2,29 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import java.util.HashMap;
 import java.util.Random;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 
 
 public class MainActivity extends AppCompatActivity {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//    }
-//
-////    public void disable(View v){
-////        v.setEnabled(false);
-////        Log.d("Success", "Button Disabled");
-////    }
-
     private Button button, button2, button3;
-    private int[] buttonIds = {R.id.button, R.id.button2, R.id.button3};
+    private final int[] buttonIds = {R.id.button, R.id.button2, R.id.button3};
     private int currentLevel = 1;
     private static final int MAX_LEVEL = 50;
     private int[] currentSequence;
     private int[] expectedSequence = currentSequence;
     private int currentIndex = 0;
     private TextView levelTextView;
+
+    private boolean isPaused = false;
 
 
     @Override
@@ -71,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 handleButtonClick((Button) v);
             }
         });
+
     }
 
     private void resetColors(){
@@ -102,8 +94,20 @@ public class MainActivity extends AppCompatActivity {
             currentSequence[i] = buttonNumbers[i];
             sequenceLog.append(buttonNumbers[i]).append(" ");
         }
-        Log.d("Sequence", sequenceLog.toString()); // Log the sequence
+        Log.d("Sequence", sequenceLog.toString());
         expectedSequence = currentSequence;
+    }
+
+    private void randomButtonMovements(Button clickedButton) {
+        Random r = new Random();
+        int maxX = findViewById(android.R.id.content).getWidth() - clickedButton.getWidth();
+        int maxY = findViewById(android.R.id.content).getHeight() - clickedButton.getHeight();
+
+        int newX = r.nextInt(maxX);
+        int newY = r.nextInt(maxY);
+
+        clickedButton.setX(newX);
+        clickedButton.setY(newY);
     }
 
     private void handleButtonClick(Button clickedButton){
@@ -111,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         int clickedButtonId = clickedButton.getId();
         Log.d("Button IDs", "Clicked Button ID: " + clickedButtonId + ", Expected Button ID: " + expectedButtonId);
         if (clickedButtonId == expectedButtonId) {
+            randomButtonMovements(clickedButton);
             Log.d("correct", "correct button clicked!");
             clickedButton.setBackgroundColor(getResources().getColor(R.color.correct_button_color)); // Set background color to green
             currentIndex++;
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 updateLevelText();
                 generateSequence();
                 currentIndex = 0;
+
             }
         } else {
             currentIndex = 0;
